@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login System</title>
+</head>
+<body>
+	{% block content %}
+	<form action="check/" method="post">{% csrf_token %}
+	Username : <input type="text" name="Username"><br>
+	<br>
+	Password : <input type="Password" name="Password"><br>
+	<input type="Submit" name="Login" value="Login">
+	</form>
+	<br><br><br><br><br><br><br><br>
+	Don't have an account :
+	<form action="login/">
+		<input type="Submit" name="sign up" value="sign up">
+	}
+	</form>
+	{% endblock %}
+</body>
+</html>

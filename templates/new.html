@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello Screen </title>
+</head>
+<body>
+{% block content %}
+	{% for i in names %}
+		{% for j in pass %}
+			{% if i == name %}
+				{% if j == password %}
+					{{i}}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+{% endblock %}
+</body>
+</html>
