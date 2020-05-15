@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import Person
-from django.http import HttpResponse
+from .models import *
+from django.http import HttpResponse, HttpResponseRedirect
 
 names = []
-passwords= []
+passwords = []
+
 for i in range(10):
 	try:
 		x = Person.objects.get(id=i).name
@@ -13,27 +14,41 @@ for i in range(10):
 
 	except:
 		continue
+
+
 def main(request):
 	return render(request, 'login.html')
 
 
 def check(request):
-
 	name = request.POST['Username']
 	password = request.POST['Password']
-	# for i in range(10):
-	# 	check_n = Person.objects.get(id=i).name
-	# 	check_p = Person.objects.get(id=i).password
-	# 	if check_n == name and check_p == password:
-	# 		return HttpResponse(request, "Hello Abhilash")
-	# 	else:
-	# 		continue
-	# return HttpResponse(request, "Sorry Abhilash")
+	likes = str(Likes.objects.get(id=1).likes)
 	return render(request, 'new.html',
 				 {'names': names,
-			 	 'pass': passwords,
-			 	 'name': name,
-			 	 'password': password,
-			 		})
+			 	  'pass': passwords,
+			 	  'name': name,
+			 	  'password': password,
+			 	   'like': likes,
+			 	  })
 def new_log(request):
 	return render(request, 'signup.html')
+
+def signin(request):
+	name = request.POST['name']
+	password = request.POST['pass']
+	new_person = Person()
+	new_person.name = name
+	new_person.password = password
+	new_person.save()
+	try:
+		return HttpResponse(request, "Congrats You successfuly signed in!")
+	except:
+		return HttpResponse(request, 'Sorry, plz try again')
+
+def addlike(request):
+	likem = Likes.objects.get(id=1)
+	like = Likes.objects.get(id=1).likes
+	like += 1
+	likem.save()
+	return HttpResponseRedirect('/')

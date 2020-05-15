@@ -3,19 +3,29 @@
 <head>
 	<title>Login System</title>
 </head>
-<body>
+<body style="font: caption;">
 	{% block content %}
+	<h1>Welcome to Abhilash's Todo List App!</h1>
+	Plz make your todo list account here (no email needed!)
 	<form action="check/" method="post">{% csrf_token %}
 	Username : <input type="text" name="Username"><br>
 	<br>
 	Password : <input type="Password" name="Password"><br>
 	<input type="Submit" name="Login" value="Login">
 	</form>
-	<br><br><br><br><br><br><br><br>
+	<br>
+	Total Likes : {{ like }}
+	<br><br>
+	<form action="/addlikes/" method="post">{% csrf_token %}
+		Plz leave a like here :
+		<input type="Submit" name="box" value="Like">
+	</form >
+	<br><br><br>
 	Don't have an account :
-	<form action="login/">
+
+	<form action="login/" method="post">
+		{% csrf_token %}
 		<input type="Submit" name="sign up" value="sign up">
-	}
 	</form>
 	{% endblock %}
 </body>

@@ -4,10 +4,11 @@
 	<title>Sign Up</title>
 </head>
 <body>
-	<form action="/signin/" method="post"></form>{% csrf_token %}
+	<form action="/signin/" method="post">	{% csrf_token %}<br>
 
-	Enter Username :<input type="Text" name="name">
-	Enter Password :<input type="Password" name="pass">
-	<input type="Submit" name="Submit" value="Sign in">
+		Enter Username :<input type="" name="name"><br><br>
+		Enter Password :<input type="Password" name="pass"><br>
+		<input type="Submit" name="Submit" value="Sign in"><br>
+	</form>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
 	<title>Hello Screen </title>
 </head>
-<body>
+<body bgcolor="lightgreen">
 {% block content %}
 	{% for i in names %}
 		{% for j in pass %}
 			{% if i == name %}
 				{% if j == password %}
-					{{i}}
+				<h1>Hello {{ i }}</h1>
 				{% endif %}
 			{% endif %}
 		{% endfor %}
