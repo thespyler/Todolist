@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+Enter your tasks here :<br>
+<input type="Text" name="Text">
+<input type="Submit" value="Add">
+</form>
+<form><input type="Submit" value="delete"></form>
+				{% endfor %}
+				<form action="/addtask/" method="post">{% csrf_token %}
+</h1>
+</body>
+</html>

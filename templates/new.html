@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello Screen </title>
+	<title> Hello Screen </title>
 </head>
-<body bgcolor="lightgreen">
+<body style="font: status-bar;">
 {% block content %}
 	{% for i in names %}
 		{% for j in pass %}
 			{% if i == name %}
 				{% if j == password %}
-				<h1>Hello {{ i }}</h1>
+				<h1>
+				Hello {{ i }} this is a Todo List app
+				<form action="/{{ i }}/" method="post">{% csrf_token %}
+					<input type="submit"
+					 value="Go">
+				
+				</form>
 				{% endif %}
 			{% endif %}
 		{% endfor %}

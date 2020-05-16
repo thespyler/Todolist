@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'log',
+    'todo_list',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

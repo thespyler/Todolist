@@ -3,8 +3,18 @@
 <head>
 	<title>Todo List</title>
 </head>
-<body>
+<body style="font: caption;">
 	{% block content %}
+		{% for item in all_items %}
+			{{item.Task}}
+			<form action="/delete/{{item.id}}/">
+				<input type="submit" value="delete">
+			</form>
+			<form action="addtask/{{ name }}">
+				Add your tasks here :<br>
+				<input type="Text" name="addtask">
+				<input type="submit" value="Add">
+			</form>
 	{% endblock %}
 
 </body>

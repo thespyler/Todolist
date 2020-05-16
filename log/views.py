@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse, HttpResponseRedirect
-
+from todo_list.models import *
 names = []
 passwords = []
 
-for i in range(10):
+for i in range(len(Person.objects.all())+1):
 	try:
 		x = Person.objects.get(id=i).name
 		y = Person.objects.get(id=i).password
@@ -30,7 +30,7 @@ def check(request):
 			 	  'name': name,
 			 	  'password': password,
 			 	   'like': likes,
-			 	  })
+			 	  },)
 def new_log(request):
 	return render(request, 'signup.html')
 
@@ -42,7 +42,7 @@ def signin(request):
 	new_person.password = password
 	new_person.save()
 	try:
-		return HttpResponse(request, "Congrats You successfuly signed in!")
+		return HttpResponseRedirect('/')
 	except:
 		return HttpResponse(request, 'Sorry, plz try again')
 
@@ -52,3 +52,9 @@ def addlike(request):
 	like += 1
 	likem.save()
 	return HttpResponseRedirect('/')
+
+def function(request, name):
+	return render(request, 'todo.html',
+				 {'name':name,
+				   'all_items': AllTasks().objects.all()
+				   })
